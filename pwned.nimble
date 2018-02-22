@@ -7,6 +7,8 @@ license       = "MIT"
 srcDir        = "src"
 bin           = @["pwned"]
 
+skipExt = @["nim"]
+
 # Dependencies
 
 requires "nim >= 0.17.3"

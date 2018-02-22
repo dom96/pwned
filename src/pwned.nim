@@ -1,5 +1,7 @@
 import securehash, httpclient, strutils, strformat
 
+import utils
+
 const
   apiUrl = "https://api.pwnedpasswords.com/range/"
 
@@ -23,7 +25,9 @@ proc rangeCheck(hash: SecureHash): int =
 
 when isMainModule:
   stdout.write("Please enter your password: ")
-  let password = stdin.readLine()
+  let password = getPassword()
+  if password.len == 0:
+    quit("No password entered.")
 
   let hash = secureHash(password)
   let occurrences = rangeCheck(hash)
